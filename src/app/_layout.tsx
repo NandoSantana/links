@@ -7,12 +7,12 @@ export default  function Layout(){
     
     return (
         <Stack 
-                screenOptions={{
-                    headerShown:false,
-                    contentStyle: {
-                        backgroundColor
-                    }
-                }}
-            />
+            screenOptions={{
+                headerShown:false,
+                contentStyle: {
+                    backgroundColor
+                }
+            }}
+        />
     )
 }
