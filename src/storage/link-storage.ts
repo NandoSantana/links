@@ -21,8 +21,8 @@ async function save(newLink: LinkStorage){
         await AsyncStorage.setItem(LINKS_STORAGE_KEY, updated)
 
     } catch (error) {
-        throw error;
-        
+        console.log(error)
+        // throw error;
     }
 }
 
