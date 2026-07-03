@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Alert, FlatList, Image, Modal, Text, TouchableOpacity, View } from "react-native";
+import { Alert, FlatList, Image, Linking, Modal, Text, TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 
@@ -52,6 +52,14 @@ export default function Index() {
         ])
        
     }
+    async function handleOpen(){
+        try {
+            await Linking.openURL(link.url)
+            setShowModal(false)
+        } catch (error) {
+            Alert.alert("Link", "Não foi possivel abrir o link")
+        }
+    }
 
     useFocusEffect(
         useCallback(()=> {
@@ -100,7 +108,7 @@ export default function Index() {
                         </Text>
                         <View style={styles.modalFooter}>
                             <Option name="Excluir" onPress={handleRemove} icon="delete" variant="secondary" />
-                            <Option name="Abrir" icon="language" variant="primary" />
+                            <Option name="Abrir" onPress={handleOpen} icon="language" variant="primary" />
 
                         </View>
                     </View>
