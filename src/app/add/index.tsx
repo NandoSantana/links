@@ -32,8 +32,13 @@ export default function Add(){
             if(!url.trim()){
                 return Alert.alert('Url', "Informe a url")
             }
-            const data = await linkStorage.get();
-            console.log(data)
+            await linkStorage.save({
+                id: new Date().getTime().toString(),
+                name, 
+                url, 
+                category
+            })
+           
         
         } catch (error) {
             Alert.alert('Erro', "Não foi possivel salvar o link")
@@ -56,8 +61,12 @@ export default function Add(){
             <Categories onChange={setCategory} selected={category} />
 
             <View style={styles.form}>
-                <Input placeholder="Nome" onChangeText={(value) => setName(value)} autoCorrect={false}/>
-                <Input placeholder="Url" onChangeText={setUrl}/>
+                <Input autoCapitalize="none" placeholder="Nome" onChangeText={(value) => setName(value)} autoCorrect={false}/>
+                <Input 
+                    placeholder="Url" 
+                    onChangeText={setUrl}
+                    autoCapitalize="none"
+                    />
 
                 <Button title="Adicionar" onPress={handleAdd}/>
             </View>
