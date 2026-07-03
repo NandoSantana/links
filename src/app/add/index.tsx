@@ -39,6 +39,12 @@ export default function Add(){
                 category
             })
            
+            Alert.alert("Sucesso", "Novo Link adicionado", [
+                {
+                    text:"OK",
+                    onPress: () => router.back()
+                }
+            ])
         
         } catch (error) {
             Alert.alert('Erro', "Não foi possivel salvar o link")
